@@ -12,6 +12,7 @@ public class MainAseguradora {
 		Scanner lectorInt = new Scanner(System.in);
 		int opcion;
 		int posicion = 0;
+		String opcion1;
 
 		Poliza listadoPolizas[] = new Poliza[0];
 		do {
@@ -32,12 +33,13 @@ public class MainAseguradora {
 				for (int i = 0; i < listadoPolizas.length; i++) {
 					listadoTemporal[i] = listadoPolizas[i];
 				}
-				String opcion1;
+				
 				do {
 					System.out.println("a)PólizaGeneral");
 					System.out.println("b)PólizaVip ");
+					System.out.println("Regresar al Menú: digite cualquier carater diferente de a o b ");
 					opcion1 = lectorString.nextLine();
-					if (opcion1 == "a") {
+					if (opcion1.equals("a")) {
 						System.out.print("Nombre: ");
 						String nombre = lectorString.nextLine();
 						System.out.print("Descripcion: ");
@@ -70,7 +72,7 @@ public class MainAseguradora {
 						posicion++;
 
 						System.out.println(Arrays.toString(listadoPolizas));
-					} else if (opcion1 == "b") {
+					} else if (opcion1.equals("b")) {
 						System.out.print("Nombre: ");
 						String nombre = lectorString.nextLine();
 						System.out.print("Descripcion: ");
@@ -101,7 +103,7 @@ public class MainAseguradora {
 
 						System.out.println(Arrays.toString(listadoPolizas));
 					}
-				} while (opcion1 == "a" || opcion1 == "b");
+				} while (opcion1.equals("a")||opcion1.equals("b"));
 			}
 			if (opcion == 2) {
 				System.out.print("Ingrese el Código de Póliza");

@@ -78,7 +78,7 @@ public class Poliza implements Comparable<Poliza> {
 
 	@Override
 	public String toString() {
-		return "Poliza [nombre=" + nombre + ", descripcion=" + descripcion + ", anioVigencia=" + anioVigencia
+		return "\nPoliza [nombre=" + nombre + ", descripcion=" + descripcion + ", anioVigencia=" + anioVigencia
 				+ ", codigoPoliza=" + codigoPoliza + ", valorPoliza=" + valorPoliza + ", polizaGeneral=" + polizaGeneral
 				+ ", polizaVip=" + polizaVip + "]";
 	}
