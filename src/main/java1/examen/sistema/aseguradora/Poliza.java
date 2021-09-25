@@ -6,6 +6,8 @@ public class Poliza implements Comparable<Poliza> {
 	protected String anioVigencia;
 	protected String codigoPoliza;
 	protected int valorPoliza;
+	protected PolizaGeneral polizaGeneral;
+	protected PolizaVip polizaVip;
 
 	public String getNombre() {
 		return nombre;
@@ -47,6 +49,22 @@ public class Poliza implements Comparable<Poliza> {
 		this.valorPoliza = valorPoliza;
 	}
 
+	public PolizaGeneral getPolizaGeneral() {
+		return polizaGeneral;
+	}
+
+	public void setPolizaGeneral(PolizaGeneral polizaGeneral) {
+		this.polizaGeneral = polizaGeneral;
+	}
+
+	public PolizaVip getPolizaVip() {
+		return polizaVip;
+	}
+
+	public void setPolizaVip(PolizaVip polizaVip) {
+		this.polizaVip = polizaVip;
+	}
+
 	public int compareTo(Poliza o) {
 		// TODO Auto-generated method stub
 		if (this.valorPoliza > o.getValorPoliza()) {
@@ -61,6 +79,8 @@ public class Poliza implements Comparable<Poliza> {
 	@Override
 	public String toString() {
 		return "Poliza [nombre=" + nombre + ", descripcion=" + descripcion + ", anioVigencia=" + anioVigencia
-				+ ", codigoPoliza=" + codigoPoliza + ", valorPoliza=" + valorPoliza + "]";
+				+ ", codigoPoliza=" + codigoPoliza + ", valorPoliza=" + valorPoliza + ", polizaGeneral=" + polizaGeneral
+				+ ", polizaVip=" + polizaVip + "]";
 	}
+
 }

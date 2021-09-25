@@ -3,7 +3,6 @@ package examen.sistema.aseguradora;
 import java.util.Arrays;
 import java.util.Scanner;
 
-
 public class MainAseguradora {
 
 	public static void main(String[] args) {
@@ -33,11 +32,12 @@ public class MainAseguradora {
 				for (int i = 0; i < listadoPolizas.length; i++) {
 					listadoTemporal[i] = listadoPolizas[i];
 				}
+				String opcion1;
 				do {
 					System.out.println("a)PólizaGeneral");
 					System.out.println("b)PólizaVip ");
-					String opcion1 = lectorString.nextLine();
-					if(opcion1=="a") {
+					opcion1 = lectorString.nextLine();
+					if (opcion1 == "a") {
 						System.out.print("Nombre: ");
 						String nombre = lectorString.nextLine();
 						System.out.print("Descripcion: ");
@@ -48,61 +48,109 @@ public class MainAseguradora {
 						String codigo = lectorString.nextLine();
 						System.out.print("Valor de poliza: ");
 						int valor = lectorInt.nextInt();
-						
+						System.out.print("Codigo de descuento: ");
+						String codigoDescuento = lectorString.nextLine();
+						System.out.print("Numero de seguro: ");
+						String numeroSeguro = lectorString.nextLine();
+
 						Poliza polizaIngreso = new Poliza();
 						polizaIngreso.setNombre(nombre);
 						polizaIngreso.setDescripcion(descripcion);
 						polizaIngreso.setAnioVigencia(anioVigencia);
 						polizaIngreso.setCodigoPoliza(codigo);
 						polizaIngreso.setValorPoliza(valor);
-						
-						
+						PolizaGeneral polizaGeneral1 = new PolizaGeneral();
+						polizaGeneral1.setCodigoDescuento(codigoDescuento);
+						polizaGeneral1.setNumeroSeguro(numeroSeguro);
+
 						// rellenado del vector temporal
-						listadoTemporal[posicion] = pacienteIngreso;
+						listadoTemporal[posicion] = polizaIngreso;
 						// los valores del temporal van al original
-						listadoPacientes = listadoTemporal;
+						listadoPolizas = listadoTemporal;
 						posicion++;
 
-						System.out.println(Arrays.toString(listadoPacientes));
-					}else if(opcion1=="b"){
-						
+						System.out.println(Arrays.toString(listadoPolizas));
+					} else if (opcion1 == "b") {
+						System.out.print("Nombre: ");
+						String nombre = lectorString.nextLine();
+						System.out.print("Descripcion: ");
+						String descripcion = lectorString.nextLine();
+						System.out.print("Año de vigencia: ");
+						String anioVigencia = lectorString.nextLine();
+						System.out.print("Codigo de poliza: ");
+						String codigo = lectorString.nextLine();
+						System.out.print("Valor de poliza: ");
+						int valor = lectorInt.nextInt();
+						System.out.print("Beneficio: ");
+						String beneficio = lectorString.nextLine();
+
+						Poliza polizaIngreso = new Poliza();
+						polizaIngreso.setNombre(nombre);
+						polizaIngreso.setDescripcion(descripcion);
+						polizaIngreso.setAnioVigencia(anioVigencia);
+						polizaIngreso.setCodigoPoliza(codigo);
+						polizaIngreso.setValorPoliza(valor);
+						PolizaVip polizaVip1 = new PolizaVip();
+						polizaVip1.setBeneficio(beneficio);
+
+						// rellenado del vector temporal
+						listadoTemporal[posicion] = polizaIngreso;
+						// los valores del temporal van al original
+						listadoPolizas = listadoTemporal;
+						posicion++;
+
+						System.out.println(Arrays.toString(listadoPolizas));
 					}
-				}while(opcion=="a"||opcion=="b");
-				System.out.println("***** Registro del paciente *****");
-				System.out.print("Ingrese nombre del paciente: ");
-				String nombre = lectorString.nextLine();
-				System.out.print("Ingrese apellido del paciente: ");
-				String apellido = lectorString.nextLine();
-				System.out.print("Ingrese edad del paciente: ");
-				int edad = lectorInt.nextInt();
-				System.out.print("Ingrese síntoma del paciente: ");
-				String sintoma = lectorString.nextLine();
-
-				Paciente pacienteIngreso = new Paciente();
-				pacienteIngreso.setNombre(nombre);
-				pacienteIngreso.setApellido(apellido);
-				pacienteIngreso.setEdad(edad);
-				pacienteIngreso.setSintoma(sintoma);
-				// rellenado del vector temporal
-				listadoTemporal[posicion] = pacienteIngreso;
-				// los valores del temporal van al original
-				listadoPacientes = listadoTemporal;
-				posicion++;
-
-				System.out.println(Arrays.toString(listadoPacientes));
+				} while (opcion1 == "a" || opcion1 == "b");
 			}
 			if (opcion == 2) {
-				System.out.println("***** Reporte *****");
-				Arrays.sort(listadoPacientes);
-				for (int i = 0; i < listadoPacientes.length; i++) {
+				System.out.print("Ingrese el Código de Póliza");
+				String codigo = lectorString.nextLine();
+				for (int i = 0; i < listadoPolizas.length; i++) {
+					Poliza busquedaPoliza = listadoPolizas[i];
+					boolean encontrar = busquedaPoliza.getCodigoPoliza().equals(codigo);
+					if (encontrar == true) {
+						System.out.println("Ingrese el nuevo valor de la poliza");
+						int nuevoValor = lectorInt.nextInt();
+						Poliza polizaIngreso2 = new Poliza();
+						polizaIngreso2.setValorPoliza(nuevoValor);
 
-					System.out.println(listadoPacientes[i]);
+					} else {
+						System.out.println("Poliza no encontrada");
+					}
+
+				}
+			}
+			if (opcion == 3) {
+				System.out.print("Ingrese el Código de Póliza");
+				String codigo = lectorString.nextLine();
+				for (int i = 0; i < listadoPolizas.length; i++) {
+					Poliza busquedaPoliza = listadoPolizas[i];
+					boolean encontrar = busquedaPoliza.getCodigoPoliza().equals(codigo);
+					if (encontrar == true) {
+						System.out.println("Nombre: " + listadoPolizas[i].getNombre() + " - Año Vigencia: "
+								+ listadoPolizas[i].getAnioVigencia() + " - Código de Póliza: "
+								+ listadoPolizas[i].getCodigoPoliza() + " - Valor: "
+								+ listadoPolizas[i].getValorPoliza());
+					} else {
+						System.out.println("Poliza no encontrada");
+					}
+
+				}
+			}
+
+			if (opcion == 4) {
+				System.out.println("***** Reporte *****");
+				Arrays.sort(listadoPolizas);
+				for (int i = 0; i < listadoPolizas.length; i++) {
+
+					System.out.println(listadoPolizas[i]);
 				}
 			}
 		} while (opcion != 5);
 		System.out.println("Gracias por usar el sistema");
 		// System.out.println("listado final de estudiantes");
-		// System.out.println(Arrays.toString(listadoPacientes));	
+		// System.out.println(Arrays.toString(listadoPacientes));
 	}
 
 }
